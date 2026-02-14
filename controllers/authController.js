@@ -145,9 +145,9 @@ exports.verifyemail = async (req, res, next) => {
         res.status(400).json({message: "User not exists"})
     } else {
         otp = Math.floor(100000 + Math.random() * 600000);
-        console.log("otp is", otp);
         const Email = sendEmail(user.email, "Verify Your Email Address – My Bot", 
-            `<body style="margin:0;padding:0;background-color:#05060c;font-family:Arial,Helvetica,sans-serif;">
+            `
+            <body style="margin:0;padding:0;background-color:#05060c;font-family:Arial,Helvetica,sans-serif;">
 
   <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#05060c;padding:30px 0;">
     <tr>
@@ -262,4 +262,5 @@ exports.newpass = async (req, res, next) => {
   const result = await User.updatePass(email, password);
   console.log("Updated Succesfully", result);
   res.status(200).json({message: "Success"});
+
 }; 
