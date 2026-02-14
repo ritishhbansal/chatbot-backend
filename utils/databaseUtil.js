@@ -1,7 +1,6 @@
 const { MongoClient } = require("mongodb");
 
-require("dotenv").config(); // ensure env is loaded
-
+require("dotenv").config(); 
 const Mongo_Url = process.env.MONGO_URL;
 
 let _db;
@@ -15,11 +14,11 @@ const mongoConnect = async (callback) => {
     const client = await MongoClient.connect(Mongo_Url);
     _db = client.db("Chatbot");
 
-    console.log("✅ MongoDB connected");
+    console.log(" MongoDB connected");
     callback();
 
   } catch (err) {
-    console.log("❌ Error while connecting to mongo:", err.message);
+    console.log(" Error while connecting to mongo:", err.message);
   }
 };
 
@@ -32,3 +31,4 @@ const getdb = () => {
 
 exports.mongoConnect = mongoConnect;
 exports.getdb = getdb;
+
