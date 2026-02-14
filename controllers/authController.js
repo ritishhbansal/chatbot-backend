@@ -145,9 +145,9 @@ exports.verifyemail = async (req, res, next) => {
         res.status(400).json({message: "User not exists"})
     } else {
         otp = Math.floor(100000 + Math.random() * 600000);
-        const Email = sendEmail(user.email, "Verify Your Email Address – My Bot", 
-            `
-            <body style="margin:0;padding:0;background-color:#05060c;font-family:Arial,Helvetica,sans-serif;">
+        console.log("otp is", otp);
+        const Email = sendEmail(email, "Verify Your Email Address – My Bot", 
+            `<body style="margin:0;padding:0;background-color:#05060c;font-family:Arial,Helvetica,sans-serif;">
 
   <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#05060c;padding:30px 0;">
     <tr>
@@ -240,8 +240,7 @@ exports.verifyemail = async (req, res, next) => {
     </tr>
   </table>
 
-</body>
-            `)
+</body>`)
     }
 
     res.status(200).json({message: "otp sent"});
@@ -264,3 +263,4 @@ exports.newpass = async (req, res, next) => {
   res.status(200).json({message: "Success"});
 
 }; 
+
