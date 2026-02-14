@@ -20,12 +20,6 @@ const store = new Mongodbstore({
     databaseName: 'Chatbot',
     collection: 'session'
 });
-
-app.use(cors({
-    origin: "http://localhost:5173", 
-    credentials: true
-}));
-
 app.use(session ({
     secret: "chatbot",
     resave: false,
@@ -41,4 +35,5 @@ mongoConnect(() => {
 app.listen(PORT, () => {
     console.log(`backend server running on address http://localhost:${PORT}`);
 });
+
 });
