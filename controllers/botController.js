@@ -9,14 +9,10 @@ exports.message = async (req, res, next) => {
             return res.status(400).json({error: "text cannot be empty"});
         }
 
-        // const user = await Main.create({
-        //     sender:"user",
-        //     text
-        // })
 
 //In my pc its giving error to integrate API of Ai chatbot so i trained the model with some data 
 
-        //data
+        //Data
         const botResponses = {
 
   // ===== GREETINGS =====
@@ -388,11 +384,7 @@ exports.message = async (req, res, next) => {
 
         const normalizeText = text.toLowerCase().trim();
 
-        const botResponse = botResponses[normalizeText] || "Sorry i don't understand that";
-
-        // const bot = await Bot.create({
-        //     text: botResponse
-        // });
+    const botResponse = botResponses[normalizeText] || "Sorry i don't understand that";
 
         const newChat = new Chat(userId, text, botResponse);
         const save = await newChat.chatSave();
@@ -405,4 +397,5 @@ exports.message = async (req, res, next) => {
         console.log("Error in msg controller:", err);
         return res.status(500).json({error:"Internal Server Error"});
     }
+
 }
